@@ -1,3 +1,4 @@
+Command line Chess
 I have done an implementation of the Chess game using the command line.
 Currently, I have most of the pieces moving.
 The next stage will be doing the end game conditions, being the check and draw functions.
