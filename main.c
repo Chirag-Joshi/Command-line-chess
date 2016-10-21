@@ -43,8 +43,8 @@ void print_board() {
 	for(i = 7; i >= 0; i--) {
 		printf("\n");
 		for(j = 0; j < 8; j++) {
-		/*	if(j == 0)
-				printf("%d  ", i + 1);*/
+			if(j == 0)
+				printf("%d  ", i + 1);
 			switch(board[i][j]) {
 				case x :
 					piece = " . ";
@@ -114,8 +114,8 @@ void print_board() {
 		}
 	}
 	printf("\n");
-	if(i == 0 && j == 7)
-		printf("   a b c d e f g h\n");
+	//if(i == 0 && j == 7)
+	printf("\n    a  b  c  d  e  f  g  h\n");
 }
 
 void change_board(int move1, int move2, int move3, int move4) {
@@ -182,61 +182,96 @@ int main(int argc, char *argv[]) {
 						continue;
 					}
 					break;
-				case bishop : { 
-						      int i, j, k = 0, count = 0;
-						      if((move3 == move1) || (move2 == move4) || (board[move4][move3] > 0)) {
-							      printf("Move not possible!!\n");
-							      break;	
-						      }
-						      else if((move3 > move1) && (move4 > move2) && (abs(move1 - move3) == abs(move2 - move4))) {
-							      for(i = move1, j = move2; i < move3 && j < move4; i++, j++, k++) {
-								      if(board[j][i] == x)
-									      count++;
-								      else 
-									      continue;
-							      }
-							      if(count == k) {
-								      change_board(move1, move2, move3, move4);
-							      }
-						      }
-						      else if((move3 > move1) && (move4 < move2) && (abs(move1-move3) == abs(move2 - move4))) {
-							      for(i = move1, j = move2; i < move3 && j < move4; i++, j--, k++) {
-								      if(board[j][i] == x)
-									      count++;
-								      else 
-									      continue;
-							      }
-							      if(count == k) {
-								      change_board(move1, move2, move3, move4);
-							      }
-						      }
-						      else if((move3 < move1) && (move4 < move2) && (abs(move1-move3) == abs(move2 - move4))) {
-							      for(i = move1, j = move2; i < move3 && j < move4; i--, j--, k++) {
-								      if(board[j][i] == x)
-									      count++;
-								      else 
-									      continue;
-							      }
-							      if(count == k) {
-								      change_board(move1, move2, move3, move4);
-							      }
-						      }
-						      else if((move3 < move1) && (move4 > move2) && (abs(move1-move3) == abs(move2 - move4))) {
-							      for(i = move1, j = move2; i < move3 && j < move4; i--, j++, k++) {
-								      if(board[j][i] == x)
-									      count++;
-								      else 
-									      continue;
-							      }
-							      if(count == k) {
-								      change_board(move1, move2, move3, move4);
-							      }
-						      }
-						      else {
-							      printf("Move not possible!!");
-							      continue;
-						      }
-					      }
+				case bishop : {
+						int i, j, k = 0, count = 0;
+						//Checking if valid move for bishop and last piece is not positive
+						if((move3 == move1) || (move2 == move4) || (board[move4][move3] > 0)) {
+							printf("Move not possible!! bishop - last piece is wrong or invalid move for bishop\n");
+							break;
+						}
+
+						//Moving bishop diagonally up to right side
+						else if((move1 < move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and dest are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i++, j++, k++) {
+								if(board[j][i] == x)
+									count++;
+								else 
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! bishop - middle places not empty\n");
+								break;
+							}
+						}
+						
+						//Moving bishop diagonally up to left side
+						else if((move1 > move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and dest are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i--, j++, k++) {
+								if(board[j][i] == x) 
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! bishop - moddle places not empty diag up left\n");
+								break;
+							}
+						}
+						
+						//Moving bishop diagonally down to right side
+						else if((move1 < move3) && (move2 > move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and destination are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i++, j--, k++) {
+								if(board[j][i] == x)
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! bishop - middle places not empty diag down right\n");
+								break;
+							}
+						}					
+						
+						//Moving bishop diagonally down to left side
+						else if((move1 < move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and destination are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i--, j--, k++) {
+								if(board[j][i] == x)
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! bishop - middle places not empty diag down left\n");
+								break;
+							}
+						}
+						
+						//For any other problem
+						else {
+							printf("Move not possible - bishop shitload went wrong\n");
+							break;
+						}
+				}
 
 				case rook : {
 						    int i, count = 0, k = 0;
@@ -256,6 +291,7 @@ int main(int argc, char *argv[]) {
 							    }
 							    if(count == k) {
 								    change_board(move1, move2, move3, move4);
+								    break;
 							    } 
 							    else {
 								    printf("Move not possible rook - middle places not empty\n");
@@ -273,6 +309,7 @@ int main(int argc, char *argv[]) {
 							    }
 							    if(count == k) {
 								    change_board(move1, move2, move3, move4);
+								    break;
 							    } 
 							    else {
 								    printf("Move not possible rook - middle places not empty\n");
@@ -290,6 +327,7 @@ int main(int argc, char *argv[]) {
 							    }
 							    if(count == k) {
 								    change_board(move1, move2, move3, move4);
+								    break;
 							    } 
 							    else {
 								    printf("Move not possible rook - middle places not empty\n");
@@ -307,6 +345,7 @@ int main(int argc, char *argv[]) {
 							    }
 							    if(count == k) {
 								    change_board(move1, move2, move3, move4);
+								    break;
 							    } 
 							    else {
 								    printf("Move not possible rook - middle places not empty\n");
@@ -325,7 +364,7 @@ int main(int argc, char *argv[]) {
 
 					      }
 				case queen : {
-						     int i, k = 0, count = 0;
+						     int i, j, k = 0, count = 0;
 						     //Checking if endpoint has correct piece
 						     if(board[move4][move3] > 0) {
 							     printf("Move not possible queen end point has wrong piece\n");
@@ -399,6 +438,88 @@ int main(int argc, char *argv[]) {
 								     break;
 							     }
 						     }
+
+						//Moving queen diagonally up to right side
+						else if((move1 < move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and dest are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i++, j++, k++) {
+								if(board[j][i] == x)
+									count++;
+								else 
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! queen - middle places not empty diag up right\n");
+								break;
+							}
+						}
+						
+						//Moving queen diagonally up to left side
+						else if((move1 > move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and dest are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i--, j++, k++) {
+								if(board[j][i] == x) 
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! queen - moddle places not empty diag up left\n");
+								break;
+							}
+						}
+						
+						//Moving queen diagonally down to right side
+						else if((move1 < move3) && (move2 > move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and destination are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i++, j--, k++) {
+								if(board[j][i] == x)
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! queen - middle places not empty diag down right\n");
+								break;
+							}
+						}					
+						
+						//Moving queen diagonally down to left side
+						else if((move1 < move3) && (move2 < move4) && (abs(move1 - move3) == abs(move2 - move4))) {
+							//Checking if middle places between src and destination are empty
+							for(i = (move1 + 1), j = (move2 + 1); i < move3 && j < move4; i--, j--, k++) {
+								if(board[j][i] == x)
+									count++;
+								else
+									continue;
+							}
+							if(count == k) {
+								change_board(move1, move2, move3, move4);
+								break;
+							}
+							else {
+								printf("Move not possible!! queen - middle places not empty diag down left\n");
+								break;
+							}
+						}
+						
+						//For any other problem
+						else {
+							printf("Move not possible - queen shitload went wrong\n");
+							break;
+						}
 
 
 					     } 
