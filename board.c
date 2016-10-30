@@ -33,7 +33,7 @@ void print_board() {
 				printf("%d  ", i + 1);
 			switch(board[i][j]) {
 				case x :
-					piece = " . ";
+					piece = " - ";
 					printf("%s", piece);
 					break;
 				case pawn : 

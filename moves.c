@@ -21,14 +21,17 @@ void move_w_pawn(int move1, int move2, int move3, int move4) {
 	} 
 	else if((board[move4][move3] == 0) && (move4 == (move2 + 1)) && (move1 == move3)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}	
 	else if((board[move4][move3] < 0) && (move3 == (move1 + 1)) && (move4 == (move2 + 1))) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 	else if((board[move4][move3] < 0) && (move3 == (move1 - 1)) && (move4 == (move2 + 1))) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 	else { 
@@ -44,14 +47,17 @@ void move_b_pawn(int move1, int move2, int move3, int move4) {
 	} 
 	else if((board[move4][move3] == 0) && (move4 == (move2 - 1)) && (move1 == move3)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}	
 	else if((board[move4][move3] > 0) && (move3 == (move1 - 1)) && (move4 == (move2 - 1))) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 	else if((board[move4][move3] > 0) && (move3 == (move1 + 1)) && (move4 == (move2 - 1))) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 	else { 
@@ -81,6 +87,7 @@ void move_w_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -100,6 +107,7 @@ void move_w_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -119,6 +127,7 @@ void move_w_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -138,6 +147,7 @@ void move_w_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -172,6 +182,7 @@ void move_b_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -191,6 +202,7 @@ void move_b_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -210,6 +222,7 @@ void move_b_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -229,6 +242,7 @@ void move_b_bishop(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -264,11 +278,13 @@ void move_w_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//If both condition fail
@@ -283,11 +299,13 @@ void move_w_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//If both condition fail
@@ -302,11 +320,13 @@ void move_w_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//If both condition fail
@@ -321,11 +341,13 @@ void move_w_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		//If both condition fail
@@ -360,11 +382,13 @@ void move_b_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//If both condition fail
@@ -379,11 +403,13 @@ void move_b_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//If both condition fail
@@ -398,11 +424,13 @@ void move_b_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//If both condition fail
@@ -417,11 +445,13 @@ void move_b_knight(int move1, int move2, int move3, int move4) {
 		//CASE 1
 		if((abs(move1 - move3) == 1) && (abs(move2 - move4) == 2)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//CASE 2
 		else if((abs(move1 - move3) == 2) && (abs(move2 - move4) == 1)) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		//If both condition fail
@@ -463,6 +493,7 @@ void move_w_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -481,6 +512,7 @@ void move_w_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -499,6 +531,7 @@ void move_w_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -517,6 +550,7 @@ void move_w_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -549,6 +583,7 @@ void move_b_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -567,6 +602,7 @@ void move_b_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -585,6 +621,7 @@ void move_b_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -603,6 +640,7 @@ void move_b_rook(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -637,6 +675,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -655,6 +694,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -673,6 +713,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);	
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -691,6 +732,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		} 
 		else {
@@ -710,6 +752,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -729,6 +772,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -748,6 +792,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -767,6 +812,7 @@ void move_w_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = BLACK;
 			return;
 		}
 		else {
@@ -802,6 +848,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -820,6 +867,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -838,6 +886,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -856,6 +905,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		} 
 		else {
@@ -875,6 +925,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -894,6 +945,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -913,6 +965,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -932,6 +985,7 @@ void move_b_queen(int move1, int move2, int move3, int move4) {
 		}
 		if(count == k) {
 			change_board(move1, move2, move3, move4);
+			turn = WHITE;
 			return;
 		}
 		else {
@@ -958,48 +1012,56 @@ void move_w_king(int move1, int move2, int move3, int move4) {
 	//Moving king vertilcally upwards
 	else if((move1 == move3) && (move2 < move4) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moveing king vertically downwards
 	else if((move1 == move3) && (move2 > move4) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moving king horizantally right
 	else if((move2 == move4) && (move1 < move3) && (abs(move1 - move3) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moving king horizontally to left
 	else if((move2 == move4) && (move1 > move3) && (abs(move1 - move3) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moving king diagonally up right
 	else if((move1 < move3) && (move2 < move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moving king diagonally up left
 	else if((move1 > move3) && (move2 < move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;	
 	}
 
 	//Moving king diagonally down right
 	else if((move1 > move3) && (move2 < move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
 	//Moving king diagonally down left
 	else if((move1 < move3) && (move2 > move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = BLACK;
 		return;
 	}
 
@@ -1021,48 +1083,56 @@ void move_b_king(int move1, int move2, int move3, int move4) {
 	//Moving king vertilcally upwards
 	else if((move1 == move3) && (move2 > move4) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moveing king vertically downwards
 	else if((move1 == move3) && (move2 < move4) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moving king horizantally right
 	else if((move2 == move4) && (move1 < move3) && (abs(move1 - move3) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moving king horizontally to left
 	else if((move2 == move4) && (move1 < move3) && (abs(move1 - move3) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moving king diagonally up right
 	else if((move1 > move3) && (move2 > move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moving king diagonally up left
 	else if((move1 < move3) && (move2 > move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;	
 	}
 
 	//Moving king diagonally down right
 	else if((move1 < move3) && (move2 > move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 
 	//Moving king diagonally down left
 	else if((move1 > move3) && (move2 < move4) && (abs(move1 - move3) == 1) && (abs(move2 - move4) == 1)) {
 		change_board(move1, move2, move3, move4);
+		turn = WHITE;
 		return;
 	}
 

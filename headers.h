@@ -10,8 +10,8 @@
 #define x 0
 
 //For which turn
-#define WHITE INT_MAX
-#define BLACK INT_MIN
+#define WHITE 1
+#define BLACK 2
 #define OTHER 0
 
 //GLOBALS
