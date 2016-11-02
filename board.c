@@ -1,7 +1,22 @@
+/* This file is part of Command Line Chess.
+ * Copyright (C) 2016 Chirag Joshi
+ * Command line chess is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/    
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "headers.h"
-
 
 int start[8][8] = {
 	{rook, knight, bishop, queen, king, bishop, knight, rook},
@@ -27,6 +42,40 @@ void change_board(int move1, int move2, int move3, int move4) {
 	print_board();
 	//display();
 }
+
+int random_number(int min_num, int max_num) {
+	if(min_num == 0 && max_num == 0) 
+		return 0;
+	int result = 0, low_num = 0, hi_num = 0;
+	if(min_num < max_num) {
+		low_num = min_num;
+		hi_num = max_num + 1; // this is done to include max_num in output.
+	}
+	else {
+		low_num=max_num + 1;// this is done to include max_num in output.
+		hi_num = min_num;
+	}
+	srand(time(NULL));
+	result = (rand() % (hi_num - low_num)) + low_num;
+	return result;
+}
+
+
+int piece_value(int pos1, int pos2) {
+	switch(board[pos1][pos2]) {
+		case pawn :
+			return 1;
+		case bishop :
+			return 3;
+		case knight :
+			return 3;
+		case rook :
+			return 5;
+		case queen :
+			return 9;
+		}
+}
+
 //Simulate has to be called in pair with reverse simulation!!
 void simulate_board(int move1, int move2, int move3, int move4) {
 	board[move4][move3] = board[move2][move1];

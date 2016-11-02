@@ -1,3 +1,19 @@
+/* This file is part of Command Line Chess.
+ * Copyright (C) 2016 Chirag Joshi
+ * Command line chess is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/    
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers.h"
@@ -15,7 +31,7 @@
 //For pawn
 
 int move_w_pawn(int move1, int move2, int move3, int move4) {
-	if(board[move4][move3] > 0) {
+	if(board[move4][move3] > 0 || (board[move2][move1] != pawn)) {
 		//Move not possible!! end piece wrong for pawn
 		return 0;
 	} 
@@ -28,7 +44,7 @@ int move_w_pawn(int move1, int move2, int move3, int move4) {
 	else if((board[move4][move3] < 0) && (move3 == (move1 - 1)) && (move4 == (move2 + 1))) {
 		return 1;
 	}
-	else if((move1 == move3) && (move2 == 1) && (move4 == (move2 + 2)) && (board[move4][move3] == 0) && (board[move4][move3] == 0)) {
+	else if((move1 == move3) && (move2 == 1) && (move4 == (move2 + 2)) && (board[move4][move3] == 0) && (board[move4 - 1][move3] == 0)) {
 		return 1;
 	}
 	else { 
@@ -38,7 +54,7 @@ int move_w_pawn(int move1, int move2, int move3, int move4) {
 }
 
 int move_b_pawn(int move1, int move2, int move3, int move4) {
-	if(board[move4][move3] < 0) {
+	if(board[move4][move3] < 0 || (board[move2][move1] != -pawn)) {
 		//Move not possible!! pawn - destination has wrong piece
 		return 0;
 	} 
@@ -51,7 +67,7 @@ int move_b_pawn(int move1, int move2, int move3, int move4) {
 	else if((board[move4][move3] > 0) && (move3 == (move1 + 1)) && (move4 == (move2 - 1))) {
 		return 1;
 	}
-	else if((move1 == move3) && (move2 == 6) && (move4 == (move2 - 2)) && (board[move4][move3] == 0) && (board[move4][move3] == 0)) {
+	else if((move1 == move3) && (move2 == 6) && (move4 == (move2 - 2)) && (board[move4][move3] == 0) && (board[move4 + 1][move3] == 0)) {
 		return 1;
 	}
 	else { 
@@ -65,7 +81,7 @@ int move_b_pawn(int move1, int move2, int move3, int move4) {
 int move_w_bishop(int move1, int move2, int move3, int move4) {
 	int i, j, k = 0, count = 0;
 	//Checking if valid move for bishop and last piece is not positive
-	if((move3 == move1) || (move2 == move4) || (board[move4][move3] > 0)) {
+	if((move3 == move1) || (move2 == move4) || (board[move4][move3] > 0) || (board[move2][move1] != bishop)) {
 		//Move not possible!! bishop - last piece is wrong or invalid move for bishop
 		return 0;
 	}
@@ -168,7 +184,7 @@ int move_w_bishop(int move1, int move2, int move3, int move4) {
 int move_b_bishop(int move1, int move2, int move3, int move4) {
 	int i, j, k = 0, count = 0;
 	//Checking if valid move for bishop and last piece is not positive
-	if((move3 == move1) || (move2 == move4) || (board[move4][move3] < 0)) {
+	if((move3 == move1) || (move2 == move4) || (board[move4][move3] < 0) || (board[move2][move1] != -bishop)) {
 		//Move not possible!! bishop - last piece is wrong or invalid move for bishop
 		return 0;
 	}
@@ -269,7 +285,7 @@ int move_b_bishop(int move1, int move2, int move3, int move4) {
 
 int move_w_knight(int move1, int move2, int move3, int move4) {
 	//Checking if destination does not have a white piece
-	if((board[move4][move3] > 0)) {
+	if((board[move4][move3] > 0) || (board[move2][move1] != knight)) {
 		//Move not possible!! knight - end point has wrong piece
 		return 0;
 	}
@@ -357,7 +373,7 @@ int move_w_knight(int move1, int move2, int move3, int move4) {
 
 int move_b_knight(int move1, int move2, int move3, int move4) {
 	//Checking if destination does not have a white piece
-	if((board[move4][move3] < 0)) {
+	if((board[move4][move3] < 0) || (board[move2][move1] != -knight)) {
 		//Move not possible!! knight - end point has wrong piece
 		return 0;
 	}
@@ -450,7 +466,7 @@ int move_b_knight(int move1, int move2, int move3, int move4) {
 int move_w_rook(int move1, int move2, int move3, int move4) {
 	int i, count = 0, k = 0;
 	//Checking if legal move for rook
-	if((board[move4][move3] > 0)) {
+	if((board[move4][move3] > 0) || (board[move2][move1] != rook)) {
 		//Move not possible!! rook - end point has wrong piece
 		return 0;
 	}
@@ -532,7 +548,7 @@ int move_w_rook(int move1, int move2, int move3, int move4) {
 int move_b_rook(int move1, int move2, int move3, int move4) {
 	int i, count = 0, k = 0;
 	//Checking if legal move for rook
-	if((board[move4][move3] < 0)) {
+	if((board[move4][move3] < 0) || (board[move2][move1] != -rook)) {
 		//Move not possible!! rook - end point has wrong piece
 		return 0;
 	}
@@ -616,7 +632,7 @@ int move_b_rook(int move1, int move2, int move3, int move4) {
 int move_w_queen(int move1, int move2, int move3, int move4) {
 	int i, j, k = 0, count = 0;
 	//Checking if endpoint has correct piece
-	if(board[move4][move3] > 0) {
+	if((board[move4][move3] > 0) || (board[move2][move1] != queen)) {
 		//Move not possible queen end point has wrong piece
 		return 0;
 	}
@@ -788,7 +804,7 @@ int move_w_queen(int move1, int move2, int move3, int move4) {
 int move_b_queen(int move1, int move2, int move3, int move4) {
 	int i, count = 0, j, k = 0;
 	//Checking if legal move for rook
-	if((board[move4][move3] < 0)) {
+	if((board[move4][move3] < 0) || (board[move2][move1] != -queen)) {
 		//Move not possible!! rook - end point has wrong piece
 		return 0;
 	}

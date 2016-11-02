@@ -29,13 +29,53 @@
 #define BLACK 2
 #define OTHER 0
 
+//For what player
+#define COMP 1
+#define TWO 2
+
 //GLOBALS
 int board[8][8];
 int turn;
+int player;
 //For casteling white
 int w_rook_flag, w_king_flag;
 //For casteling black
 int b_rook_flag, b_king_flag;
+
+
+//For one player chess
+typedef struct kill_structure {
+	int move1, move2, move3, move4;
+} kill_structure;
+
+typedef struct normal_structure {
+	int move1, move2, move3, move4;
+} normal_structure;
+
+typedef struct best_pawn_structure {
+	int move1, move2, move3, move4, kill;
+} best_pawn_structure;
+
+typedef struct best_knight_structure {
+	int move1, move2, move3, move4, kill;
+} best_knight_structure;
+
+typedef struct best_rook_structure {
+	int move1, move2, move3, move4, kill;
+} best_rook_structure;
+
+typedef struct best_bishop_structure {
+	int move1, move2, move3, move4, kill;
+} best_bishop_structure;
+
+typedef struct best_queen_structure {
+	int move1, move2, move3, move4, kill;
+} best_queen_structure;
+
+typedef struct best_move_structure {
+	int move1, move2, move3, move4, kill;
+} best_move_structure;
+
 
 //In file board.c
 
@@ -49,9 +89,14 @@ void simulate_board(int move1, int move2, int move3, int move4);
 
 void rev_simulate_board(int move1, int move2, int move3, int move4);
 
+int piece_value(int pos1, int pos2);
+
 int white_check();
 
 int black_check();
+
+int random_number(int min_num, int max_num);
+
 //In moves.c
 
 int move_w_pawn(int move1, int move2, int move3, int move4);
