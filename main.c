@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				int temp;
-				fscanf(fp, "%d %d", &temp, &turn); printf("%d", temp); return 0;
+				fscanf(fp, "%d %d", &temp, &turn); 
 				fscanf(fp, "%d %d", &white_check_flag, &black_check_flag);
 				fscanf(fp, "%d %d %d %d", &w_king_flag, &w_rook_flag, &b_king_flag, &b_rook_flag);
 				fscanf(fp, "%s %s", player1, player2);
@@ -557,6 +557,7 @@ int main(int argc, char *argv[]) {
 						     }
 
 					default : {
+							  print_board();
 							  printf("It is %s's turn.\n", player2);
 							  continue;
 						  }
