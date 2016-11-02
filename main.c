@@ -11,7 +11,7 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/    
+ */    
 
 #include <stdio.h>
 #include <string.h>
@@ -190,6 +190,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				else {
+					print_board();
 					printf("Move not possible!! castleing king side\n");
 					continue;
 				}
@@ -201,6 +202,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				else {
+					print_board();
 					printf("Move not possible!! castle king side\n");
 					continue;
 				}
@@ -220,6 +222,7 @@ int main(int argc, char *argv[]) {
 
 				switch(board[move2][move1]) {
 					case x :
+						print_board();
 						printf("Move not possible!!\n");
 						continue;
 					case pawn : {
@@ -235,6 +238,7 @@ int main(int argc, char *argv[]) {
 								    continue;
 							    }
 							    else {
+								    print_board();
 								    printf("Move not possible!! white pawn\n");
 								    continue;
 							    }
@@ -254,6 +258,7 @@ int main(int argc, char *argv[]) {
 								      continue;
 							      }
 							      else {
+								      print_board();
 								      printf("Move not possible!! white bishop\n");
 								      continue;
 							      }
@@ -275,6 +280,7 @@ int main(int argc, char *argv[]) {
 								    continue;
 							    }
 							    else {
+								    print_board();
 								    printf("Move not possible!! white rook\n");
 								    continue;
 							    }
@@ -293,6 +299,7 @@ int main(int argc, char *argv[]) {
 								     continue;
 							     }
 							     else {
+								     print_board();
 								     printf("Move not possible!! white knight\n");
 								     continue;
 							     }
@@ -311,6 +318,7 @@ int main(int argc, char *argv[]) {
 								     continue;
 							     }
 							     else {
+								     print_board();
 								     printf("move not possible!! white queen\n");
 								     continue;
 							     }
@@ -331,12 +339,14 @@ int main(int argc, char *argv[]) {
 								    continue;
 							    }
 							    else {
+								    print_board();
 								    printf("move not possible!! white king\n");
 								    continue;
 							    }
 							    continue;
 						    }
 					default : {
+							  print_board();
 							  printf("It is %s's turn.\n", player1);
 							  continue;
 						  }
@@ -384,6 +394,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				else {
+					print_board();
 					printf("Move not possible!! castleing king side\n");
 					continue;
 				}
@@ -395,6 +406,7 @@ int main(int argc, char *argv[]) {
 					continue;
 				}
 				else {
+					print_board();
 					printf("Move not possible!! castle king side\n");
 					continue;
 				}
@@ -419,6 +431,7 @@ int main(int argc, char *argv[]) {
 
 				switch(board[move2][move1]) {
 					case x :
+						print_board();
 						printf("Move not possible!!\n");
 						continue;
 
@@ -435,6 +448,7 @@ int main(int argc, char *argv[]) {
 								     continue;
 							     }
 							     else {
+								     print_board();
 								     printf("Move not possible!! black pawn\n");
 								     continue;
 							     }
@@ -454,6 +468,7 @@ int main(int argc, char *argv[]) {
 								       continue;
 							       }
 							       else {
+								       print_board();
 								       printf("Move not possible!! black bishop\n");
 								       continue;
 							       }
@@ -475,6 +490,7 @@ int main(int argc, char *argv[]) {
 								     continue;
 							     }
 							     else {
+								     print_board();
 								     printf("Move not possible!! black rook\n");
 								     continue;
 							     }
@@ -493,6 +509,7 @@ int main(int argc, char *argv[]) {
 								       continue;
 							       }
 							       else {
+								       print_board();
 								       printf("Move not possible!! black knight\n");
 								       continue;
 							       }
@@ -511,6 +528,7 @@ int main(int argc, char *argv[]) {
 								      continue;
 							      }
 							      else {
+								      print_board();
 								      printf("Move not possible!! black queen\n");
 								      continue;
 							      }
@@ -531,6 +549,7 @@ int main(int argc, char *argv[]) {
 								     continue;
 							     }
 							     else {
+								     print_board();
 								     printf("Move not possible!! black king\n");
 								     continue;
 							     }
